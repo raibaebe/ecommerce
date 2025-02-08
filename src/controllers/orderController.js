@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Order = require('../models/orderModel');
-const Product = require('../models/productModel');  // Import product model to verify product existence
+const Order = require('../models/Order');
+const Product = require('../models/Product');  // Import product model to verify product existence
 
 exports.createOrder = async (req, res) => {
   try {
@@ -21,6 +21,15 @@ exports.createOrder = async (req, res) => {
     await order.save();
 
     res.status(201).json(order);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.getOrders = async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.status(200).json(orders);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
