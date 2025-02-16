@@ -35,3 +35,7 @@ PORT=5000
 
 4. run 
 node index.js
+
+
+LIVE URL on render:
+https://ecommerce-fl85.onrender.com
